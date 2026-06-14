@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailShield AI - Scroll Journey & Track Safety</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Glowing Background Grid -->
+    <div class="railway-grid-overlay"></div>
+
+    <!-- Floating Navigation Bar -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i data-lucide="shield-alert" class="logo-icon"></i>
+                <span>RailShield <span class="accent-text">AI</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Station A: Home</a>
+                <a href="#iot-pipeline" class="nav-link">Station B: IoT Pipeline</a>
+                <a href="#sensor-verify" class="nav-link">Station C: Verification</a>
+                <a href="#women-safety" class="nav-link">Station D: Women Safety</a>
+                <a href="#conclusion" class="nav-link">Station E: Arrival</a>
+            </div>
+            <button class="btn btn-primary start-tour-btn" id="nav-tour-btn">
+                <i data-lucide="play-circle"></i> Run Journey Tour
+            </button>
+        </div>
+    </nav>
+
+    <!-- Floating Tour Assistant (ShieldGuard AI) -->
+    <div class="tour-guide-card" id="tour-guide">
+        <div class="tour-header">
+            <div class="tour-avatar">
+                <div class="pulse-ring"></div>
+                <i data-lucide="bot"></i>
+            </div>
+            <div class="tour-title-area">
+                <h4>ShieldGuard AI</h4>
+                <p>Journey Conductor</p>
+            </div>
+            <button class="tour-close-btn" id="close-tour"><i data-lucide="x"></i></button>
+        </div>
+        <div class="tour-body">
+            <p id="tour-text">Welcome! Let's embark on our journey. I will guide you through our trackside sensors and security dashboards. Click Next to travel!</p>
+        </div>
+        <div class="tour-footer">
+            <span class="tour-step-info" id="tour-step">Step 0/11</span>
+            <div class="tour-actions">
+                <button class="btn btn-secondary btn-sm" id="prev-tour-btn" disabled>Back</button>
+                <button class="btn btn-primary btn-sm" id="next-tour-btn">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highlight Overlay for Guided Tour -->
+    <div class="tour-highlight-overlay" id="tour-overlay"></div>
+
+    <!-- MAIN SCROLL JOURNEY -->
+    <main>
+        
+        <!-- SECTION 1: HOME (STATION A: DEPARTURE) -->
+        <section id="home" class="journey-section hero-section">
+            <div class="hero-content">
+                <div class="status-badge">
+                    <span class="pulse-dot"></span>
+                    <span>Station A: Departure Hub</span>
+                </div>
+                <h1>All Aboard: <br><span class="gradient-text">Interactive Safety Journey</span></h1>
+                <p class="hero-subtext">
+                    Scroll down to take a virtual train ride across our safety network. Discover how IoT sensors protect tracks and how Edge AI safeguards stations in real time.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#iot-pipeline" class="btn btn-primary btn-lg">
+                        <i data-lucide="train"></i> Start Journey
+                    </a>
+                    <button class="btn btn-secondary btn-lg" id="hero-tour-btn">
+                        <i data-lucide="compass"></i> Guided Tour
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="departure-mast">
+                    <div class="mast-signal-light">
+                        <span class="signal-lamp red"></span>
+                        <span class="signal-lamp yellow"></span>
+                        <span class="signal-lamp green active"></span>
+                    </div>
+                    <div class="mast-bracket"></div>
+                </div>
+            </div>
+            <div class="scroll-down-hint">
+                <span>Scroll to start the train</span>
+                <i data-lucide="chevrons-down" class="bounce-icon"></i>
+            </div>
+        </section>
+
+        <!-- SECTION 2: IoT DETECTION & ALERT PIPELINE (STATION B: TRANSIT) -->
+        <section id="iot-pipeline" class="journey-section section-padding alt-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag-special">Station B: Transit Monitor</span>
+                    <h2>IoT Trackside Alert Pipeline</h2>
+                    <p class="section-description">How a single track sensor detection triggers instant local sirens, sends a live picture for verification, and alerts the Station Master & RPF in milliseconds.</p>
+                </div>
+
+                <!-- Simulation steps control bar -->
+                <div class="pipeline-steps-bar" id="pipeline-steps-container">
+                    <div class="pipe-step active" id="p-step-1" data-step="1">
+                        <div class="pipe-num"><i data-lucide="radio"></i></div>
+                        <span>1. Sensor Senses</span>
+                    </div>
+                    <div class="pipe-step" id="p-step-2" data-step="2">
+                        <div class="pipe-num"><i data-lucide="camera"></i></div>
+                        <span>2. Camera Live Image</span>
+                    </div>
+                    <div class="pipe-step" id="p-step-3" data-step="3">
+                        <div class="pipe-num"><i data-lucide="megaphone"></i></div>
+                        <span>3. Sirens & Local Buzzer</span>
+                    </div>
+                    <div class="pipe-step" id="p-step-4" data-step="4">
+                        <div class="pipe-num"><i data-lucide="user-check"></i></div>
+                        <span>4. Station Master Alert</span>
+                    </div>
+                    <div class="pipe-step" id="p-step-5" data-step="5">
+                        <div class="pipe-num"><i data-lucide="shield"></i></div>
+                        <span>5. RPF Dispatch Alert</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Dual Interface Simulation Grid -->
+                <div class="grid grid-2-1 pipeline-grid">
+                    
+                    <!-- LEFT SIDE: WEB ADMIN INTERFACE -->
+                    <div class="interface-showcase web-showcase" id="web-dashboard-ui">
+                        <div class="window-header">
+                            <div class="window-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="window-title">RailShield Web Admin v2.1</div>
+                            <div class="window-status" id="web-status-badge">SECURE</div>
+                        </div>
+                        <div class="web-layout">
+                            <div class="web-sidebar">
+                                <div class="sidebar-item active"><i data-lucide="monitor"></i> Live Feed</div>
+                                <div class="sidebar-item"><i data-lucide="history"></i> Logs</div>
+                                <div class="sidebar-item"><i data-lucide="settings"></i> Nodes</div>
+                            </div>
+                            <div class="web-content">
+                                <div class="web-canvas-wrapper">
+                                    <canvas id="simCanvas" width="480" height="240"></canvas>
+                                    <div class="sim-scanlines"></div>
+                                    <div class="web-overlay-alert" id="web-siren-flasher">
+                                        <i data-lucide="alert-octagon"></i>
+                                        <span>TRACKSIDE SIREN BLARING - SECTOR 104</span>
+                                    </div>
+                                </div>
+                                <div class="web-logs-panel">
+                                    <div class="logs-header"><i data-lucide="terminal"></i> Live Sockets Terminal</div>
+                                    <div class="logs-lines" id="web-logs">
+                                        <div class="log-line text-muted">[System Standby] Monitoring vibration nodes...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT SIDE: MOBILE APP INTERFACE -->
+                    <div class="interface-showcase mobile-showcase" id="mobile-app-ui">
+                        <div class="phone-frame">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-screen">
+                                <div class="phone-status-bar">
+                                    <span>02:40 AM</span>
+                                    <div class="phone-battery"><i data-lucide="battery"></i> 100%</div>
+                                </div>
+                                
+                                <div class="phone-content">
+                                    <!-- Mobile Push Notification Toast -->
+                                    <div class="mobile-notification" id="mobile-push-toast">
+                                        <div class="notif-header">
+                                            <i data-lucide="shield-alert"></i>
+                                            <strong>RPF SECURITY INTRUSION</strong>
+                                            <span>Just now</span>
+                                        </div>
+                                        <div class="notif-body" id="mobile-push-text">
+                                            Sensor vibration detected in Sector 104. Firing camera snapshot...
+                                        </div>
+                                    </div>
+
+                                    <!-- Main Mobile App UI -->
+                                    <div class="mobile-app-header">
+                                        <i data-lucide="menu"></i>
+                                        <h4>RPF Dispatch App</h4>
+                                        <i data-lucide="bell"></i>
+                                    </div>
+
+                                    <div class="mobile-card alert-status-card safe" id="mobile-alert-card">
+                                        <div class="mobile-alert-icon"><i data-lucide="check-circle" id="mobile-status-icon"></i></div>
+                                        <h3 id="mobile-status-title">Sector 104 nominal</h3>
+                                        <p id="mobile-status-desc">All sensors recording nominal frequencies.</p>
+                                    </div>
+
+                                    <!-- Map Mockup -->
+                                    <div class="mobile-map-box">
+                                        <div class="mobile-map-grid">
+                                            <div class="map-rail-line"></div>
+                                            <div class="map-threat-marker" id="mobile-map-marker"></div>
+                                        </div>
+                                        <div class="map-coords">Sector: SEC-104 | Lat: 19.076 | Lng: 72.877</div>
+                                    </div>
+
+                                    <div class="mobile-actions">
+                                        <button class="mobile-btn-sos" id="mobile-sos-btn"><i data-lucide="phone-call"></i> RPF Dispatch</button>
+                                        <button class="mobile-btn-mute" id="mobile-mute-btn"><i data-lucide="volume-x"></i> Mute Siren</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="phone-home-button"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Run simulator controls -->
+                <div class="pipeline-actions-footer">
+                    <button class="btn btn-secondary" id="btn-trigger-pipeline"><i data-lucide="play"></i> Run Detection Sequence</button>
+                    <button class="btn btn-control btn-safe active" id="btn-reset-pipeline"><i data-lucide="refresh-cw"></i> Reset Sector</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SENSOR DETECTION & VERIFICATION LOOP (STATION C) -->
+        <section id="sensor-verify" class="journey-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag-special">Station C: Verification Hub</span>
+                    <h2>Sensor Detection & Verification Loop</h2>
+                    <p class="section-description">Watch the multi-stage confirmation process: the acoustic sensor registers a vibration, the PTZ camera pivots to capture a live picture of the track crossing, and sirens/Loco Pilot alerts are triggered from the dashboard.</p>
+                </div>
+                
+                <div class="grid grid-2">
+                    <!-- Left Column: Sequential Explanation Cards -->
+                    <div class="verification-controls">
+                        <div class="verif-step-card active" id="v-step-card-1">
+                            <div class="step-num-badge">01</div>
+                            <div class="step-desc">
+                                <h4>Acoustic Sensor Senses</h4>
+                                <p>Acoustic transducers detect vibration frequencies indicating a structural impact or rock slide on tracks.</p>
+                            </div>
+                        </div>
+                        <div class="verif-step-card" id="v-step-card-2">
+                            <div class="step-num-badge">02</div>
+                            <div class="step-desc">
+                                <h4>Camera Live Image Verification</h4>
+                                <p>Using coordinates from the sensor, the PTZ camera automatically pivots to capture a live picture of the blockage, processed via YOLO vision models.</p>
+                            </div>
+                        </div>
+                        <div class="verif-step-card" id="v-step-card-3">
+                            <div class="step-num-badge">03</div>
+                            <div class="step-desc">
+                                <h4>Station Master & RPF Override</h4>
+                                <p>The central admin dashboard flashes a warning, allowing operators to trigger sirens, alert the Loco Pilot, and dispatch RPF teams.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="verif-action-panel">
+                            <button class="btn btn-primary btn-lg" id="btn-run-verify"><i data-lucide="play-circle"></i> Run Loop Simulation</button>
+                            <button class="btn btn-secondary" id="btn-reset-verify" disabled><i data-lucide="refresh-cw"></i> Reset</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column: Interactive Verification Screen -->
+                    <div class="verification-display-panel" id="verification-display-container">
+                        <div class="verif-split-view">
+                            <!-- Sensor Graph Monitor -->
+                            <div class="verif-monitor-box" id="verif-graph-box">
+                                <div class="monitor-header">
+                                    <span>ACOUSTIC GRAPH: SEC-104</span>
+                                    <span class="pulse-dot" id="graph-pulse"></span>
+                                </div>
+                                <div class="sensor-graph-container">
+                                    <canvas id="sensorGraphCanvas" width="220" height="110"></canvas>
+                                </div>
+                                <div class="sensor-readout" id="sensor-readout-val">Vibrations: Nominal (12 Hz)</div>
+                            </div>
+                            
+                            <!-- Camera Optical Target Lock -->
+                            <div class="verif-monitor-box" id="verif-camera-box">
+                                <div class="monitor-header">
+                                    <span>PTZ CONFIRMATION FEED</span>
+                                    <span class="cctv-rec-dot">REC</span>
+                                </div>
+                                <div class="verif-cctv-feed" id="verif-cctv-panel">
+                                    <div class="target-overlay-grid"></div>
+                                    <div class="verif-target-box" id="verif-threat-box">
+                                        <!-- Mini SVG rock debris -->
+                                        <svg viewBox="0 0 40 30" width="30" height="25" fill="#555" class="threat-icon">
+                                            <polygon points="10,25 20,5 30,12 38,25 5,25" />
+                                        </svg>
+                                        <div class="bounding-indicator">DEBRIS (94.2%)</div>
+                                    </div>
+                                    <div class="cctv-camera-pivot-target" id="verif-cctv-crosshair">
+                                        <div class="target-crosshair"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Operator Dispatcher Panel -->
+                        <div class="dispatcher-terminal" id="dispatch-verif-terminal">
+                            <div class="terminal-banner" id="verif-dispatch-banner">SYSTEM MONITOR SECURE</div>
+                            <div class="terminal-action-area">
+                                <span class="terminal-text" id="verif-terminal-txt">Awaiting sensor trigger...</span>
+                                <button class="btn btn-danger btn-sm" id="btn-execute-brake" disabled><i data-lucide="alert-circle"></i> ALERT LOCO PILOT & RPF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: WOMEN SAFETY CORE (STATION D: PLATFORM HUB) -->
+        <section id="women-safety" class="journey-section section-padding alt-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag-special red-glow">Station D: Platform Security</span>
+                    <h2>Women Platform Safety Core</h2>
+                    <p class="section-description">Dedicated neural networks designed to protect female commuters on isolated stations through gesture recognition and thermal stress verification.</p>
+                </div>
+
+                <!-- Part 1: Handwave Visual SOS -->
+                <div class="grid grid-2 ws-row">
+                    <div class="ws-card">
+                        <span class="ws-step-badge">Module 01</span>
+                        <h3>Handwave Visual SOS Detection</h3>
+                        <p>
+                            Traditional panic buttons are hard to reach in emergency situations. Our platform-mounted cameras recognize **overhead handwave gestures** from a passenger facing the lens.
+                        </p>
+                        <ul class="ws-bullet-list">
+                            <li><i data-lucide="shield-check"></i> **Instant SOS Activation:** Eliminates the need to find call boxes or access smartphones.</li>
+                            <li><i data-lucide="scan"></i> **Visual Handwave AI:** Tracks skeleton vectors and alerts dispatch within 1.5 seconds.</li>
+                            <li><i data-lucide="volume-2"></i> **Local Sirens & Announcer:** Instantly triggers platform warning sirens and lights.</li>
+                        </ul>
+                        <div class="ws-card-actions">
+                            <button class="btn btn-primary" id="btn-sim-handwave"><i data-lucide="hand"></i> Simulate Handwave SOS</button>
+                        </div>
+                    </div>
+                    
+                    <div class="ws-visual-container">
+                        <div class="visual-panel cctv-view-panel" id="handwave-visual-panel">
+                            <div class="cctv-hud">
+                                <span class="cctv-label">CCTV_CAM_09 [PLATFORM EAST]</span>
+                                <span class="cctv-rec-dot">REC</span>
+                            </div>
+                            
+                            <!-- Simulated skeleton vector container -->
+                            <div class="skeleton-container" id="skeleton-fig">
+                                <div class="sk-head"></div>
+                                <div class="sk-neck"></div>
+                                <div class="sk-spine"></div>
+                                <div class="sk-left-arm"></div>
+                                <div class="sk-right-arm"></div>
+                                <div class="sk-left-leg"></div>
+                                <div class="sk-right-leg"></div>
+                                
+                                <!-- NESTED BOUNDING BOX (FOR ACCURACY) -->
+                                <div class="skeleton-bounding-box" id="skeleton-bbox">
+                                    <span>SOS CONFIRMED (98.4%)</span>
+                                </div>
+                            </div>
+                            
+                            <div class="cctv-flashing-alert" id="handwave-alert-overlay">
+                                <span>SOS TRIGGERED: PLATFORM SIREN ENGAGED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ws-divider"></div>
+
+                <!-- Part 2: Thermal Heat + CCTV Sensor Fusion -->
+                <div class="grid grid-2 ws-row">
+                    <div class="ws-visual-container">
+                        <!-- Dual screen FLIR + Optical -->
+                        <div class="dual-screen-layout">
+                            <div class="screen-half thermal-view-panel" id="thermal-screen">
+                                <div class="screen-tag-overlay">FLIR THERMAL VIEW</div>
+                                <div class="thermal-glow-body" id="thermal-glow-fig"></div>
+                                <div class="thermal-temp-tag" id="thermal-temp-badge">36.5°C</div>
+                            </div>
+                            <div class="screen-half cctv-view-panel" id="cctv-pivot-screen">
+                                <div class="screen-tag-overlay" id="cctv-status-tag">CCTV NORMAL VIEW [OFF-TARGET]</div>
+                                <div class="cctv-camera-pivot-target" id="cctv-pivot-target">
+                                    <div class="target-crosshair"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ws-card">
+                        <span class="ws-step-badge">Module 02</span>
+                        <h3>Thermal Heat & CCTV Sensor Fusion</h3>
+                        <p>
+                            CCTV systems can fail to detect stress in blind spots or bad lighting. We fuse **Thermal FLIR cameras** with standard optical cameras to monitor platform corners.
+                        </p>
+                        <ul class="ws-bullet-list">
+                            <li><i data-lucide="thermometer"></i> **Heat Signature Tracking:** Detects abnormal body temperature spikes (stress v. environment signature).</li>
+                            <li><i data-lucide="rotate-3d"></i> **CCTV Auto-Pivot:** Nearest optical camera zooms and pivots automatically onto the thermal anomaly location in seconds.</li>
+                            <li><i data-lucide="send"></i> **Station Master Notification:** Transmits optical live pictures to the Station Master desk.</li>
+                        </ul>
+                        <div class="ws-card-actions">
+                            <button class="btn btn-primary" id="btn-sim-thermal"><i data-lucide="thermometer"></i> Simulate Thermal Anomaly</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: JOURNEY'S END (STATION E: SAFE ARRIVAL) -->
+        <section id="conclusion" class="journey-section section-padding conclusion-section">
+            <div class="container text-center">
+                <i data-lucide="shield-check" class="concl-icon-big"></i>
+                <h2>Station E: Safe Arrival</h2>
+                <p class="concl-subtext">
+                    By intercepting trackside blockages with automated IoT pipelines and station platforms with gesture visual safety nets, RailShield AI ensures every commuter reaches their destination securely.
+                </p>
+                <div class="conclusion-cta">
+                    <h3>Explore the Interactive Journey Again</h3>
+                    <p>Scroll back to the top station or run the guided tour conductor to experience the automated flow.</p>
+                    <a href="#home" class="btn btn-primary btn-lg"><i data-lucide="arrow-up"></i> Return to Station A</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- STICKY SCROLL TRACKER - TRAIN FROM STATION A TO E -->
+    <div class="sticky-train-tracker">
+        <div class="tracker-container">
+            <div class="rail-line-track"></div>
+            
+            <!-- Stations markers -->
+            <div class="station-marker active" id="marker-a" style="left: 5%;">
+                <div class="marker-dot"></div>
+                <span class="marker-label">A: Home</span>
+            </div>
+            <div class="station-marker" id="marker-b" style="left: 27.5%;">
+                <div class="marker-dot"></div>
+                <span class="marker-label">B: IoT Pipeline</span>
+            </div>
+            <div class="station-marker" id="marker-c" style="left: 50%;">
+                <div class="marker-dot"></div>
+                <span class="marker-label">C: Verification</span>
+            </div>
+            <div class="station-marker" id="marker-d" style="left: 72.5%;">
+                <div class="marker-dot"></div>
+                <span class="marker-label">D: Women Safety</span>
+            </div>
+            <div class="station-marker" id="marker-e" style="left: 95%;">
+                <div class="marker-dot"></div>
+                <span class="marker-label">E: Arrival</span>
+            </div>
+
+            <!-- Moving Train -->
+            <div class="moving-train-icon" id="journey-train">
+                <div class="train-cabin"><i data-lucide="train"></i></div>
+                <div class="train-steam"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 RailShield AI Project. All rights reserved.</p>
+            <p>Designed for Next-Generation Smart Railways</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
