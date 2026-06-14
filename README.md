@@ -30,6 +30,14 @@ The website itself is a **scroll-driven interactive journey** from Station A to 
 
 ---
 
+## 🎬 Live Walkthrough Video
+
+> Watch the complete project walkthrough — every feature explained with a live demo of the interactive website.
+
+▶️ **[Click here to watch the full walkthrough](https://drive.google.com/file/d/1y4-xKwvLss2DlbTXXQqVnDPw8jI89wK9/view?usp=sharing)**
+
+---
+
 ## 📁 Project Structure
 
 ```
